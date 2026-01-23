@@ -1,4 +1,4 @@
-🚨 End-to-End MLOps Pipeline for Network Security Threat Detection
+### 🚨 End-to-End MLOps Pipeline for Network Security Threat Detection
 📌 Overview
 
 This repository showcases a production-grade Machine Learning Operations (MLOps) pipeline applied to network security — specifically for detecting malicious activities such as phishing attempts or intrusion attempts.

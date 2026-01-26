@@ -43,9 +43,13 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      # 🚀 BULLETPROOF BUILD + PUSH
-      - name: Build and Push Docker Image
-        run: docker build -t ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest . && docker push ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+      # -------- BUILD --------
+      - name: Build Docker Image
+        run: docker build -t ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest .
+
+      # -------- PUSH --------
+      - name: Push Docker Image
+        run: docker push ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
   deploy:
     name: Deploy to EC2
@@ -87,6 +91,7 @@ jobs:
 
       - name: Cleanup
         run: docker system prune -af
+
 
 
 

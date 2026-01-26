@@ -43,17 +43,21 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
+      # 🔍 Debug workspace (optional later remove)
       - name: Debug files
         run: |
           pwd
           ls -la
 
-
-      # -------- BUILD --------
+      # 🚀 BUILD IMAGE (context forced)
       - name: Build Docker Image
-        run: docker build -t ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest .
+        run: |
+          docker build \
+            --file Dockerfile \
+            --tag ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest \
+            ./
 
-      # -------- PUSH --------
+      # 📦 PUSH IMAGE
       - name: Push Docker Image
         run: docker push ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
@@ -97,6 +101,7 @@ jobs:
 
       - name: Cleanup
         run: docker system prune -af
+
 
 
 

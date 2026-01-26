@@ -44,14 +44,10 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build and Push Docker Image
-        env:
-          REGISTRY: ${{ secrets.AWS_ECR_LOGIN_URI }}
-          REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
-          TAG: latest
         run: |
-          echo "Building $REGISTRY/$REPOSITORY:$TAG"
-          docker build -t $REGISTRY/$REPOSITORY:$TAG .
-          docker push $REGISTRY/$REPOSITORY:$TAG
+          echo "Building image..."
+          docker build -t ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest .
+          docker push ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
   deploy:
     name: Deploy to EC2
@@ -80,10 +76,6 @@ jobs:
           docker stop networksecurity || true
           docker rm networksecurity || true
 
-      - name: Debug image
-        run: |
-          echo "IMAGE=${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest"
-
       - name: Run new container
         run: |
           docker run -d \
@@ -98,6 +90,7 @@ jobs:
 
       - name: Cleanup
         run: docker system prune -af
+
 
 
 

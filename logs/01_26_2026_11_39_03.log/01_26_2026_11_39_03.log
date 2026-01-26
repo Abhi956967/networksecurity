@@ -1,7 +1,0 @@
-[ 2026-01-26 11:39:09,740 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2026-01-26 11:39:09,745 ] 107 dagshub - INFO - Accessing as Abhi956967
-[ 2026-01-26 11:39:11,440 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Abhi956967/networksecurity "HTTP/1.1 200 OK"
-[ 2026-01-26 11:39:13,852 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2026-01-26 11:39:13,854 ] 107 dagshub - INFO - Initialized MLflow to track repo "Abhi956967/networksecurity"
-[ 2026-01-26 11:39:13,855 ] 107 dagshub - INFO - Repository Abhi956967/networksecurity initialized!
-[ 2026-01-26 11:39:25,729 ] 42 root - INFO - Start data Ingestion

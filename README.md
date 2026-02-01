@@ -1,9 +1,15 @@
-### 🚨 End-to-End MLOps Pipeline for Network Security Threat Detection
+🚨 End-to-End MLOps Pipeline for Network Security Threat Detection
 📌 Overview
 
-This repository showcases a production-grade Machine Learning Operations (MLOps) pipeline applied to network security — specifically for detecting malicious activities such as phishing attempts or intrusion attempts.
+This repository demonstrates a production-grade Machine Learning Operations (MLOps) pipeline applied to cybersecurity—specifically for detecting malicious activities such as:
 
-The project integrates:
+Phishing URLs
+
+Intrusion attempts
+
+Suspicious network traffic
+
+The project integrates the complete ML lifecycle:
 
 Data Engineering
 
@@ -17,56 +23,77 @@ Containerization
 
 Cloud Deployment
 
-to create a scalable, reproducible, and efficient system suitable for real-world cybersecurity applications.
+The result is a scalable, reproducible, and automated system suitable for real-world enterprise security operations.
 
 🎯 Problem Statement
 
-The goal of this project is to leverage machine learning to automatically predict and identify network security threats — for example, classifying a URL as safe or phishing.
+The objective is to automatically classify network activity—such as URLs or packets—as safe or malicious using machine learning.
 
-Beyond building an accurate model, the project focuses on managing the entire ML lifecycle in a robust, scalable, and automated way using industry-standard MLOps practices.
+Beyond model accuracy, this project focuses heavily on:
+
+Pipeline automation
+
+Model versioning
+
+Continuous retraining
+
+Production deployment
+
+Monitoring & reproducibility
 
 ✨ Key Features
+🔄 Automated Data Ingestion
 
-Automated Data Ingestion
-Seamlessly ingests network traffic data or URL features from configurable sources.
+Pulls network traffic or URL-based datasets from configurable sources.
 
-ML Pipelines
-Orchestrated workflows for:
+🧠 ML Pipelines
+
+End-to-end orchestration covering:
 
 Data validation
 
-Feature transformation
+Feature engineering
 
 Model training
 
 Model evaluation
 
-Experiment Tracking
-Uses tools like MLflow / DagsHub to log experiments, hyperparameters, and model artifacts for full reproducibility.
+📊 Experiment Tracking
 
-CI/CD Integration
-Implements automated build, test, and deployment pipelines via GitHub Actions.
+Logs metrics, parameters, and artifacts using:
 
-Containerization
-Uses Docker to package the application and dependencies for consistent execution across environments.
+MLflow
 
-Model Deployment
-Deploys trained models as a web service using FastAPI for real-time inference.
+DagsHub / DVC
+
+🚀 CI/CD Integration
+
+Automated testing & deployment using GitHub Actions.
+
+🐳 Containerization
+
+Dockerized services for consistent execution across environments.
+
+🌐 Model Deployment
+
+REST API inference service built using FastAPI.
+
+Cloud-ready for AWS / Azure.
 
 🛠️ Technologies Used
 🔹 Machine Learning
 
 Scikit-learn
 
-TensorFlow / PyTorch (depending on model choice)
+TensorFlow / PyTorch
 
-🔹 MLOps & Experiment Tracking
+🔹 MLOps & Tracking
 
 MLflow
 
 DVC / DagsHub
 
-🔹 Workflow Orchestration
+🔹 Orchestration
 
 Prefect / Apache Airflow
 
@@ -74,64 +101,53 @@ Prefect / Apache Airflow
 
 GitHub Actions
 
-🔹 Deployment & Serving
+🔹 Deployment
 
 Docker
 
 FastAPI
 
-Cloud Platforms: AWS / Azure (optional)
+AWS / Azure
 
 📊 Project Outcome
 
-The successful implementation of this project delivers an end-to-end MLOps system capable of:
+This system enables:
 
-Continuously ingesting new data
+✅ Continuous data ingestion
+✅ Automatic retraining
+✅ Model version tracking
+✅ CI/CD-driven deployments
+✅ Real-time prediction APIs
 
-Retraining models automatically
+The architecture mirrors enterprise-grade ML platforms used in security operations centers (SOC).
 
-Tracking experiments and artifacts
-
-Deploying improved models to production
-
-Serving predictions via APIs
-
-This pipeline mirrors real-world production machine learning systems used in security operations.
-
-⚙️ Setup and Installation
-
-Detailed setup instructions should be provided in this section, including:
-
-Cloning the repository
-
-Creating a virtual environment
-
-Installing dependencies
-
-Running pipelines locally
-
-Starting the FastAPI service
-
-Executing CI/CD workflows
-
-Example:
+⚙️ Setup & Installation
+🔹 Clone Repository
 
 git clone <repository_url>
 cd network-security-mlops
 
+
+🔹 Create Virtual Environment
+
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+source venv/bin/activate      # Linux/Mac
+venv\Scripts\activate         # Windows
+
+
+🔹 Install Dependencies
 
 pip install -r requirements.txt
 
+🔹 Run Pipelines Locally
+
 python main.py
 
+🔹 Start API Service
 
-(Add more steps based on your project structure.)
+uvicorn api.main:app --reload
 
-📁 Project Structure (Optional but Recommended)
-
-You can later extend this with something like:
+📁 Project Structure
 
 ├── data/
 ├── pipelines/
@@ -145,34 +161,51 @@ You can later extend this with something like:
 ├── requirements.txt
 └── README.md
 
+🛡️ Network Security – Phishing Detection
 
+🔐 GitHub Secrets Setup
 
-### Network Security Projects For Phising Data
+Configure the following secrets inside your GitHub repository:
 
-Setup github secrets:
 AWS_ACCESS_KEY_ID=
-
 AWS_SECRET_ACCESS_KEY=
+AWS_REGION=us-east-1
 
-AWS_REGION = us-east-1
+AWS_ECR_LOGIN_URI=788614365622.dkr.ecr.us-east-1.amazonaws.com/networkssecurity
+ECR_REPOSITORY_NAME=networkssecurity
 
-AWS_ECR_LOGIN_URI = 788614365622.dkr.ecr.us-east-1.amazonaws.com/networkssecurity
-ECR_REPOSITORY_NAME = networkssecurity
+🐳 Docker Setup on EC2
 
-
-Docker Setup In EC2 commands to be Executed
-#optinal
+🔹 Update System (Optional)
 
 sudo apt-get update -y
+sudo apt-get upgrade -y
 
-sudo apt-get upgrade
-
-#required
+🔹 Install Docker (Required)
 
 curl -fsSL https://get.docker.com -o get-docker.sh
-
 sudo sh get-docker.sh
 
-sudo usermod -aG docker ubuntu
+🔹 Add User to Docker Group
 
+sudo usermod -aG docker ubuntu
 newgrp docker
+
+🔹 Verify Installation
+
+docker --version
+
+🚀 Future Enhancements (Optional)
+
+Monitoring with Prometheus & Grafana
+
+Canary deployments
+
+Model drift detection
+
+Feature store integration
+
+Automated rollback strategies
+
+Kubernetes orchestration
+

@@ -1,3 +1,5 @@
+![logo](https://github.com/Abhi956967/networksecurity/blob/main/merged_dashboard.png)
+
 🚨 End-to-End MLOps Pipeline for Network Security Threat Detection
 📌 Overview
 
